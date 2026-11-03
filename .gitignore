@@ -1,0 +1,12 @@
+*.ko
+*.ko.xz
+*.ko.zst
+*.bin
+*.bin.xz
+*.key
+*.pem
+Module.symvers
+.config
+fyde.config
+vmlinux
+*.log
