@@ -37,3 +37,22 @@ A community-tested guide for getting **MediaTek MT7902 (PCI ID 14c3:7902)** Wi-F
 This is a **guide**, not a fully reproducible driver release. The exact final patches from the successful local driver workspace have not been published. Don't download random `.ko` files or use `insmod -f`. Disabling FydeOS rootfs verification weakens security and is not required for manual testing.
 
 Credit to the ChromiumOS kernel project and community MT7902 work including [abdullaabdullazade/mt7902_driver](https://github.com/abdullaabdullazade/mt7902_driver). Third-party code and firmware have their own licenses.
+
+
+## New: troubleshooting, binaries, and self-build guide
+
+- [Problems we encountered and how we solved them](docs/PROBLEMS-AND-FIXES.md)
+- [Build the driver yourself](docs/BUILD-FROM-SOURCE.md)
+- [Verified module hashes and compatibility](docs/BINARY-FILES.md)
+- [Safe installer for already-built modules](scripts/install.sh)
+
+For users who **already have the five matching .ko files**, copy them to a directory on the FydeOS host, then run as root:
+
+```bash
+bash scripts/install.sh /path/to/modules
+bash /usr/local/mt7902/load.sh
+```
+
+This installer checks the exact kernel, PCI ID, file presence and module vermagic. It does not automatically modify protected FydeOS boot settings. For optional boot startup see [AUTOLOAD.md](docs/AUTOLOAD.md).
+
+**Binary release status:** Module files were verified separately, but are **not yet hosted in this repository**. Please don't present this project as a one-click driver download until the corresponding source and binary distribution are ready.
